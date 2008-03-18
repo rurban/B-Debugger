@@ -1,0 +1,5 @@
+0.01 2008-03-18 20:14:13 rurban
+
+	* Started from scratch with XS module at 2008-03-03.
+	Rewrote as perl-only after seeing Devel::Hook
+

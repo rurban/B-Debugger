@@ -1,0 +1,34 @@
+Walk the ops with a simple REPL. An interactive B::Concise.
+Walk in main or exec order? main per default.
+
+Inspect OP and SV/AV/HV/CV/GV vars and more by B::Concise et al methods.
+
+Plan:
+
+h    help
+n    next op
+s    step into kids
+sib  step to next sibling
+c<n> continue until state n (support also cop line number?)
+b<n> break at state n (support also cop line number?)
+u    up
+o    B::Concise current op
+f    B::Flags current op
+d    B::Debug current op
+a<n>  n-th argument var (by src name?)
+sv<n> n-th global SV var (by src name?) (is a PV or IV a seperate SV here or 
+     should we alias them?)
+l<n> n-th lexvar on the current pad
+t<var> typecheck var via Devel::TypeCheck
+
+line => state
+
+TODO: 
+inspect op args (how many, which type?)
+
+inspect var flags. What is a var? global, my (pad), local (temp), op args
+  How to denote those vars? sv1, pv1, av1, av2, cv1, gv2, ... for global vars
+
+Convenience:
+.. skip BEGIN blocks
+.. skip initial use modules
