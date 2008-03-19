@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:                B-Debugger
-version:             0.01_01
+version:             0.01_02
 abstract:            optree debugger
 license:             ~
 author:              
@@ -12,6 +12,7 @@ requires:
     B::Concise:                    0.74
     B::Flags:                      0.01
     B::Utils:                      0.05
+    Devel::Hook:                   0
 meta-spec:
     url:     http://module-build.sourceforge.net/META-spec-v1.3.html
     version: 1.3

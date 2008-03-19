@@ -1,4 +1,12 @@
-0.01 2008-03-18 20:14:13 rurban
+0.01_02 2008-03-19 09:55:52 rurban
+
+	* loop still recursive, cont logic wrong
+	* added more commands: up, goto. improved help
+	* break also at op->name, not only opidx
+	* try workarounds for missing curcv in Concise
+	* make test is more meaningful
+
+0.01_01 2008-03-18 20:14:13 rurban
 
 	* Started from scratch with XS module at 2008-03-03.
 	Rewrote as perl-only after seeing Devel::Hook
