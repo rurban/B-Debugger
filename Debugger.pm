@@ -1,6 +1,6 @@
 package B::Debugger;
 
-our $VERSION = '0.01_02';
+our $VERSION = '0.01_03';
 our $XS_VERSION = $VERSION;
 $VERSION = eval $VERSION;
 
@@ -165,15 +165,15 @@ sub debugger_help {
 
 # numeric in the valid range 0..PL_maxo or a valid opname
 sub valid_breakpoint {
-  my $_ = shift;
-  return $_ if /^\d+$/ and $op >= 0 and $op <= $maxo;
+  $b = shift;
+  return $b if $b =~ /^\d+$/ and $op >= 0 and $op <= $maxo;
   unless (%opnames) {
     for my $opnum (0 .. $maxo ) {
       my $ppname = B::ppname($opnum); # pp_{name}
       $opnames{substr($ppname,3)} = $opnum;
     }
   }
-  return exists $opnames{lc($_)} ? lc($_) : undef;
+  return exists $opnames{lc($b)} ? lc($b) : undef;
 }
 
 sub debugger_prompt {

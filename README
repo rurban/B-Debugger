@@ -24,10 +24,13 @@ t<var> typecheck var via Devel::TypeCheck
 line => state
 
 TODO: 
-inspect op args (how many, which type?)
+Inspect op args (how many, which type?)
 
-inspect var flags. What is a var? global, my (pad), local (temp), op args
+Inspect var flags. What is a var? global, my (pad), local (temp), op args
   How to denote those vars? sv1, pv1, av1, av2, cv1, gv2, ... for global vars
+
+Integrate with running B compile hooks, stepping into the B module perl code.
+This sounds hairy. perl -MO=C -MB::Debugger
 
 Convenience:
 .. skip BEGIN blocks

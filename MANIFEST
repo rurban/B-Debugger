@@ -2,7 +2,6 @@ Artistic
 Changes
 Copying
 Debugger.pm
-Debugger.xs
 MANIFEST
 META.yml
 Makefile.PL

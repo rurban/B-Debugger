@@ -1,3 +1,9 @@
+0.01_03 2008-03-24 22:35:10 rurban
+
+	* Removed the unneeded XS which caused compilation 
+	  problems.
+	* Fixed for 5.8.x
+
 0.01_02 2008-03-19 09:55:52 rurban
 
 	* loop still recursive, cont logic wrong
