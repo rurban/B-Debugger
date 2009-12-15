@@ -1,6 +1,6 @@
 package B::Debugger;
 
-our $VERSION = '0.01_03';
+our $VERSION = '0.02';
 our $XS_VERSION = $VERSION;
 $VERSION = eval $VERSION;
 
@@ -85,6 +85,12 @@ Planned:
   exit    quit perl, no execution
 
 =head1 TODO
+
+See L<Od>, freeze and thaw the optree and debug within
+L<perl5db> in C<INIT>.
+
+Delay the C<CHECK> block for L<B> or run L<perl5db> at the
+C<CHECK> block.
 
 How to manage direct opidx access?
 

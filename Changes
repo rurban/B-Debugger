@@ -1,3 +1,8 @@
+0.02    2009-12-15 08:34:11 rurban
+
+        * Added Od and its plans
+        * Added SIGNATURE
+
 0.01_03 2008-03-24 22:35:10 rurban
 
 	* Removed the unneeded XS which caused compilation 

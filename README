@@ -1,37 +1,101 @@
-Walk the ops with a simple REPL. An interactive B::Concise.
-Walk in main or exec order? main per default.
+NAME
+    B::Debugger - optree debugger
 
-Inspect OP and SV/AV/HV/CV/GV vars and more by B::Concise et al methods.
+SYNOPSIS
+      perl -MB::Debugger programm.pl
+      B::Debugger 0.01 - optree debugger. h for help
+      op 0 enter
+      > n
+      op 1 nextstate
+      > h
+      Usage:
+      n [n] next op                       l [n|x-y]     list ops
+      c [n] continue (until)              d|Debug       op
+      b <n> break at op                   o|Concise     op
+      s     step into kids                f|Flags       op
+      sib   step to next sibling          x|eval expr
+      u [n] up                            [sahpicg]v<n> n-th global var: sv1,
+      g <n> goto                          pad <n>       n-th pad variable (my)
+      h     help
+      q     quit debugger, execute        exit           quit with no execution
+      op 0 enter
+      > b 5
+      breakpoint 5 added
+      > b const
+      breakpoint const added
+      > n
+      op 2 pushmark
+      > l
+      -  <0> enter ->-
+      -  <;> nextstate(main 111 test.pl:5) v:{ ->-
+      -  <0> pushmark sM ->-  > c
+      > q
+      quit
+      executing...
 
-Plan:
+DESCRIPTION
+      Start an optree inspector before the runtime execution begins, similar
+      to the perl debugger, but only at the internal optree level, not the
+      source level. Kind of interactive B::Concise.
 
-h    help
-n    next op
-s    step into kids
-sib  step to next sibling
-c<n> continue until state n (support also cop line number?)
-b<n> break at state n (support also cop line number?)
-u    up
-o    B::Concise current op
-f    B::Flags current op
-d    B::Debug current op
-a<n>  n-th argument var (by src name?)
-sv<n> n-th global SV var (by src name?) (is a PV or IV a seperate SV here or 
-     should we alias them?)
-l<n> n-th lexvar on the current pad
-t<var> typecheck var via Devel::TypeCheck
+      The ops are numbered and in basic (=parsed) order, starting from 0.
+      Breakpoints can be defined as number or by opname.
 
-line => state
+OPTIONS
+    None yet.
 
-TODO: 
-Inspect op args (how many, which type?)
+    Planned:
 
-Inspect var flags. What is a var? global, my (pad), local (temp), op args
-  How to denote those vars? sv1, pv1, av1, av2, cv1, gv2, ... for global vars
+      -exec      switch to exec order
+      -root      start at main_root, not main_start
+      -check     hook into CHECK block (Default, at B)
+      -unit      hook into UNITCHECK block (after B)
+      -init      hook into INIT block (before B)
+      -begin     hook into BEGIN block (before compilation)
+      -d         debug, be verbose in the internal recursion steps
 
-Integrate with running B compile hooks, stepping into the B module perl code.
-This sounds hairy. perl -MO=C -MB::Debugger
+COMMANDS
+      n [n]   goto the next op, or step the next n ops
+      s       step into kid if not next
+      sib     step to next sibling
+      u [n]   go one or n steps back or up
+      g <n>   goto op 0-opmax
+      c [n]   continue. Optionally until op n
+      l [n|x-y] list n ops or from x to y.
+      x <x>   eval perl expression
+      f       list B::Flags op
+      o/C     list B::Concise op
+      d/D     list B::Debug op
+      [sahpicg]v<n> inspect n-th global variable. eg. sv1
+      h       help
+      q       quit debugger, start execution
+      exit    quit perl, no execution
 
-Convenience:
-.. skip BEGIN blocks
-.. skip initial use modules
+TODO
+    See Od, freeze and thaw the optree and debug within perl5db in "INIT".
+
+    Delay the "CHECK" block for B or run perl5db at the "CHECK" block.
+
+    How to manage direct opidx access?
+
+      Such as: Concise 10, list 5-10, up, sib
+      Do a first sweep in desired basic or exec order recording the ops?
+
+    set curcv in Concise
+
+    Commandline options
+
+    exit
+
+    de-recursify and simplify the loop, cont is broken.
+
+BUGS
+    Plenty. This is alpha and for interested compiler developers only.
+
+    l => coderef CODE(0x1553f40) has no START (set curcv in Concise)
+
+    cont, goto broken
+
+AUTHOR
+    Reini Urban "rurban@cpan.org"
+
