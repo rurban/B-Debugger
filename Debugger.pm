@@ -1,6 +1,6 @@
 package B::Debugger;
 
-our $VERSION = '0.02';
+our $VERSION = '0.10';
 our $XS_VERSION = $VERSION;
 $VERSION = eval $VERSION;
 
@@ -84,13 +84,12 @@ Planned:
   q       quit debugger, start execution
   exit    quit perl, no execution
 
+=head1 SEE ALSO
+
+Use L<Od> to step through the compiler with the perl debugger.
+It delays the C<CHECK> block for the B::backend.
+
 =head1 TODO
-
-See L<Od>, freeze and thaw the optree and debug within
-L<perl5db> in C<INIT>.
-
-Delay the C<CHECK> block for L<B> or run L<perl5db> at the
-C<CHECK> block.
 
 How to manage direct opidx access?
 
@@ -122,7 +121,7 @@ Reini Urban C<rurban@cpan.org>
 
 use Devel::Hook;
 use B qw(main_start main_root class main_cv);
-use B::Utils qw(carp croak);
+use B::Utils; # qw(carp croak);
 use B::Debug;
 use B::Flags;
 use B::Concise;

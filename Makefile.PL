@@ -3,7 +3,7 @@ use ExtUtils::MakeMaker;
 WriteMakefile
   (
    NAME	            => "B::Debugger",
-   VERSION_FROM     => "Debugger.pm",
+   VERSION_FROM     => "Od.pm",
    PREREQ_PM 	    => {
 			'Devel::Hook' => 0,
 			'B::Concise' => '0.66',
