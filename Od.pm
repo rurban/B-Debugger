@@ -1,13 +1,12 @@
 package Od;
 
-our $VERSION = '0.10';
+our $VERSION = '0.11';
 
-use B qw(main_root walkoptree_slow);
+use B;
 use Carp;
 
 sub import {
     my ($class, @options) = @_;
-    my $fh;
     my $backend = shift (@options);
     eval q[
 	BEGIN { my $compile; }
@@ -48,10 +47,14 @@ Od - Debug a Perl Compiler backend
 
 =head1 DESCRIPTION
 
-This module is a debugging replacement to L<O>, the B<Perl Compiler> frontend.
+This module is a debugging replacement to L<O>, the B<Perl Compiler> frontend,
+a source level debugger to step through a compiler.
 
 It delays the start of the B compiler C<compile> function from the CHECK block
 to the INIT block, so that the Perl debugger can be started there.
+
+Note that B<Od> handles the given options correctly, but does not step through
+the option handler. See L<Od_o> to step-through the option handling part.
 
 =head1 AUTHOR
 

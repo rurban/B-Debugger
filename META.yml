@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               B-Debugger
-version:            0.10
+version:            0.11
 abstract:           optree debugger
 author:
     - Reini Urban <rurban@cpan.org>
