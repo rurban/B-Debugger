@@ -1,13 +1,13 @@
 Artistic
 Changes
 Copying
-Debugger.pm
+lib/B/Debugger.pm
 Debugger.xs.gz
 MANIFEST
 META.yml
 Makefile.PL
-Od.pm
-Od_o.pm
+lib/Od.pm
+lib/Od_o.pm
 README
 SIGNATURE
 test.pl

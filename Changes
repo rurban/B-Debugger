@@ -1,3 +1,8 @@
+0.13    2010-07-07 rurban
+
+        * move modules into lib and lib/B, fixes wrong installation 
+	path of the Od pm's 
+
 0.12    2010-01-20 rurban
 
         * Fix non-interactive Test::Harness tests

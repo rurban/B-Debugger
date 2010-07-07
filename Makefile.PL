@@ -3,7 +3,7 @@ use ExtUtils::MakeMaker;
 WriteMakefile
   (
    NAME	            => "B::Debugger",
-   VERSION_FROM     => "Od.pm",
+   VERSION_FROM     => "lib/Od.pm",
    PREREQ_PM 	    => {
 			'Devel::Hook' => 0,
 			'B::Concise' => '0.66',
@@ -16,7 +16,7 @@ WriteMakefile
     ('LICENSE'                => 'perl', ) : ()),
    ($] >= 5.005 ?
     ('AUTHOR' => 'Reini Urban <rurban@cpan.org>',
-     'ABSTRACT_FROM' => 'Debugger.pm') : ()),
+     'ABSTRACT_FROM' => 'lib/B/Debugger.pm') : ()),
   );
 
 #sub MY::depend { "\nDebugger.c : Debugger.xs Makefile\n"; }
