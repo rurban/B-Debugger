@@ -1,7 +1,9 @@
 Debian_CPANTS.txt
 MYMETA.json
 MYMETA.yml
+META.yml
 Makefile
 Makefile.old
 blib/
 pm_to_blib
+B-Debugger-*.tar.gz
