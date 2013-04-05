@@ -4,7 +4,7 @@ use blib;
 BEGIN {
   # protect against prove-style non-interactive usage (Test::Harness fails)
   # make test works okay
-  if (!defined $ENV{PERL_DL_NONLAZY}) {
+  if ($ENV{AUTOMATED_TESTING} or $ENV{PERL_DL_NONLAZY}) {
     print "1..0 # skip non-interactive Test::Harness. Try make test instead.\n";
     exit;
   }

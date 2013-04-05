@@ -1,3 +1,8 @@
+0.14    2013-04-05 rurban
+
+	* exit smoke tests with AUTOMATED_TESTING
+	* autogenerate META and SIGNATURE
+
 0.13    2010-07-07 rurban
 
         * move modules into lib and lib/B, fixes wrong installation 

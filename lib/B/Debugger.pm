@@ -1,6 +1,6 @@
 package B::Debugger;
 
-our $VERSION = '0.13';
+our $VERSION = '0.14';
 our $XS_VERSION = $VERSION;
 $VERSION = eval $VERSION;
 
